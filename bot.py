@@ -7,3 +7,6 @@ dates, screenshot = visa.get_dates()
 if dates:
     bot.send_message(chat_id=262438, text=dates)
     bot.send_photo(chat_id=262438, photo=screenshot)
+else:
+    bot.send_message(chat_id=262438, text="no dates")
+    bot.send_photo(chat_id=262438, photo=screenshot)
