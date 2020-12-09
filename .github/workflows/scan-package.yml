@@ -6,7 +6,7 @@ name: Monitor
 on:
   push:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/10 * * * *'
 
 jobs:
   build:
