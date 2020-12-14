@@ -13,8 +13,8 @@ driver = webdriver.Chrome(chrome_options=chrome_options)
 driver.implicitly_wait(10)
 
 times, screenshot = visa.get_times(driver)
-if not times:
-    driver.quit()
-else:
-    bot.send_message(chat_id=262438, text=times)
+if times:
+    bot.send_message(chat_id=262438, text=str(times))
     bot.send_photo(chat_id=262438, photo=screenshot)
+
+driver.quit()

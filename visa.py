@@ -17,7 +17,7 @@ def get_times(driver):
         print('3')
         driver.find_element_by_xpath("//div[@class='content contenidoLayout']//p[2]/a").click()
         print('4')
-        time.sleep(3)
+        time.sleep(1)
         driver.switch_to.window(driver.window_handles[-1])
         print('5')
         time.sleep(1)
@@ -27,20 +27,18 @@ def get_times(driver):
         print('7')
         WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.ID, 'bktContinue'))).click()
         print('8')
-        time.sleep(3)
+        time.sleep(1)
         print('9')
         driver.find_element_by_xpath("//a[contains(@href, 'bkt550308')]").click()
         print('10')
-        time.sleep(5)
+        time.sleep(2)
         print('11')
         WebDriverWait(driver, 60).until(
             EC.invisibility_of_element_located((By.XPATH, '//div[@class="clsDivBktWidgetDefaultLoading"]')))
-        time.sleep(3)
-        if driver.find_element_by_id('idDivNotAvailableSlotsTextTop').is_displayed():
-            times = []
-        else:
+        time.sleep(1)
+        times = []
+        if not driver.find_element_by_id('idDivNotAvailableSlotsTextTop').is_displayed():
             times_elements = driver.find_elements_by_id("clsDivDatetimeSlot")
-            times = ["12:10",'11:00']
             print(14)
             if times_elements:
                 for time_slot in times_elements:
