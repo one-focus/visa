@@ -36,7 +36,7 @@ def get_times(driver):
         WebDriverWait(driver, 60).until(
             EC.invisibility_of_element_located((By.XPATH, '//div[@class="clsDivBktWidgetDefaultLoading"]')))
         time.sleep(1)
-        times = ['12']
+        times = []
         if not driver.find_element_by_id('idDivNotAvailableSlotsTextTop').is_displayed():
             times_elements = driver.find_elements_by_id("clsDivDatetimeSlot")
             print(14)
