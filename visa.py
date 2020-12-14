@@ -12,31 +12,7 @@ URL = 'http://www.exteriores.gob.es/Embajadas/NUEVADELHI/en/Noticias/Pages/Artic
 IS_MONITORING = False
 
 
-def send_screenshot():
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-    # chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--window-size=1024,768")
-    chrome_options.add_argument("--no-sandbox")
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-    driver.implicitly_wait(120)
-    try:
-        driver.find_element_by_class_name('popup-appCloseIcon').click()
-    except Exception:
-        pass
-    return driver.get_screenshot_as_png()
-
-
-def get_dates():
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--window-size=1024,768")
-    chrome_options.add_argument("--no-sandbox")
-    driver = webdriver.Chrome(chrome_options=chrome_options)
-    driver.implicitly_wait(10)
-
+def get_times(driver):
     try:
         print('2')
         driver.get(URL)
@@ -61,23 +37,18 @@ def get_dates():
         print('11')
         WebDriverWait(driver, 60).until(
             EC.invisibility_of_element_located((By.XPATH, '//div[@class="clsDivBktWidgetDefaultLoading"]')))
-        print('12')
-        WebDriverWait(driver, 60).until(
-            EC.element_to_be_clickable((By.ID, 'idDivBktDatetimeDatePickerIcon'))).click()
-        print('13')
         time.sleep(3)
-        elements = driver.find_elements_by_xpath("//table[@class='ui-datepicker-calendar']//td")
-        print('14')
-        time.sleep(3)
-        dates = []
-        if len(elements):
-            for element in elements:
-                if element.get_attribute("title") not in ('', 'CLOSED', 'NOT AVAILABLE'):
-                    dates.append(f'{element.text}:{element.get_attribute("title")}')
+        if driver.find_element_by_id('idDivNotAvailableSlotsTextTop').is_displayed():
+            times = []
+        else:
+            times_elements = driver.find_elements_by_id("clsDivDatetimeSlot")
+            times = []
+            print(14)
+            if times_elements:
+                for time_slot in times_elements:
+                    times.append(time_slot.text.strip())
+        print(times)
     except Exception as e:
-        dates = str(e)
+        times = str(e)
     screen = driver.get_screenshot_as_png()
-    driver.quit()
-    return dates, screen
-
-
+    return times, screen
