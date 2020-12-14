@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        sleep: ['1', '150', '300', '450', '600', '750']
+        sleep: ['1', '150', '300', '450', '600']
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 
