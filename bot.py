@@ -6,7 +6,7 @@ import visa
 from selenium import webdriver
 import sys
 
-bot = telebot.TeleBot(os.environ['TELEGRAM_TOKEN'])
+bot = telebot.TeleBot(os.environ.get('TELEGRAM_TOKEN'))
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--headless")
@@ -19,7 +19,7 @@ driver.implicitly_wait(10)
 time.sleep(int(sys.argv[1]))
 times, screenshot = visa.get_times(driver)
 if times:
-    bot.send_message(chat_id=os.environ['TELEGRAM_TO'], text=str(times))
-    bot.send_photo(chat_id=os.environ['TELEGRAM_TO'], photo=screenshot)
+    bot.send_message(chat_id=os.environ.get('TELEGRAM_TO'), text=str(times))
+    bot.send_photo(chat_id=os.environ.get('TELEGRAM_TO'), photo=screenshot)
 
 driver.quit()
