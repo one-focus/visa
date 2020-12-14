@@ -40,7 +40,7 @@ def get_times(driver):
             times = []
         else:
             times_elements = driver.find_elements_by_id("clsDivDatetimeSlot")
-            times = []
+            times = ["12:10",'11:00']
             print(14)
             if times_elements:
                 for time_slot in times_elements:
