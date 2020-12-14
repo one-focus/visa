@@ -19,7 +19,7 @@ driver.implicitly_wait(10)
 time.sleep(int(sys.argv[1]))
 times, screenshot = visa.get_times(driver)
 if times:
-    bot.send_message(chat_id=os.environ.get('TELEGRAM_TO'), text=str(times))
-    bot.send_photo(chat_id=os.environ.get('TELEGRAM_TO'), photo=screenshot)
+    bot.send_message(chat_id=int(os.environ.get('TELEGRAM_TO')), text=str(times))
+    bot.send_photo(chat_id=int(os.environ.get('TELEGRAM_TO')), photo=screenshot)
 
 driver.quit()
