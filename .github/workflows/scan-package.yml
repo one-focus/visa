@@ -4,6 +4,7 @@
 name: Monitor
 
 on:
+  push:
   schedule:
     - cron: '0 * * * *'
 
