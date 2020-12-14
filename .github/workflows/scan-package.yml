@@ -4,7 +4,6 @@
 name: Monitor
 
 on:
-  push:
   schedule:
     - cron: '*/15 * * * *'
 
@@ -14,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        sleep: ['1', '30', '60']
+        sleep: ['1', '300', '600']
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 
