@@ -42,12 +42,13 @@ def create_user(driver):
 
 time.sleep(int(sys.argv[1]))
 times, screenshot = visa.get_times(driver)
-if times:
+error = driver.find_element_by_id('idDivBktDefaultErrorDatetimeLoadingData')
+if times or not error.is_displayed():
     bot.send_message(chat_id=int(sys.argv[3]), text=str(times))
     bot.send_photo(chat_id=int(sys.argv[3]), photo=screenshot)
     create_user(driver)
 else:
     import datetime
-    bot.send_message(chat_id=int(sys.argv[3]), text=f'{sys.argv[1]} : {datetime.datetime.now()}')
+    bot.send_message(chat_id=int(sys.argv[3]), text=f'no dates:{datetime.datetime.now()}')
 
 driver.quit()
