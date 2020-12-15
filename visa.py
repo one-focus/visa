@@ -48,3 +48,26 @@ def get_times(driver):
         times = str(e)
     screen = driver.get_screenshot_as_png()
     return times, screen
+
+
+def create_user(driver, passport, passport_expired, name, surname, email, cellphone, nationality, create_pass):
+    driver.find_element_by_id('idIptBktdocument').send_keys(passport)
+    driver.find_element_by_id('idIptBktcustom2').send_keys(passport_expired)
+    driver.find_element_by_id('idIptBktname').send_keys(name)
+    driver.find_element_by_id('idIptBktcustom1').send_keys(surname)
+    driver.find_element_by_id('idIptBktemail').send_keys(email)
+    driver.find_element_by_id('idIptBktcellphone').send_keys(cellphone)
+    driver.find_element_by_id('idIptBktcustom3').send_keys(nationality)
+    driver.find_element_by_id('idIptBktpassword').send_keys(create_pass)
+    driver.find_element_by_id('idIptBktAcceptCondtions').click()
+    time.sleep(1)
+    driver.find_element_by_id('idBktDefaultSignUpConfirmButton').click()
+
+
+def add_existing_user(driver, passport, password):
+    driver.find_element_by_id('idDivBktSignUpSubHeaderAccount').click()
+    WebDriverWait(driver, 60).until(
+        EC.visibility_of_element_located((By.ID, 'idIptBktSignInlogin')))
+    driver.find_element_by_id('idIptBktSignInlogin').send_keys(passport)
+    driver.find_element_by_id('idIptBktSignInpassword').send_keys(password)
+    driver.find_element_by_id('idBktDefaultSignInConfirmButton').click()
