@@ -4,7 +4,6 @@
 name: Monitor0
 
 on:
-  push:
   schedule:
     - cron: '49 15 * * *'
 
