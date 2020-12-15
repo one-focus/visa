@@ -42,8 +42,7 @@ def create_user(driver):
 
 time.sleep(int(sys.argv[1]))
 times, screenshot = visa.get_times(driver)
-error = driver.find_element_by_id('idDivBktDefaultErrorDatetimeLoadingData')
-if times or not error.is_displayed():
+if times:
     bot.send_message(chat_id=int(sys.argv[3]), text=str(times))
     bot.send_photo(chat_id=int(sys.argv[3]), photo=screenshot)
     create_user(driver)

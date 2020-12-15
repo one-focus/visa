@@ -11,6 +11,7 @@ IS_MONITORING = False
 
 
 def get_times(driver):
+    times = []
     try:
         print('2')
         driver.get(URL)
@@ -36,7 +37,6 @@ def get_times(driver):
         WebDriverWait(driver, 60).until(
             EC.invisibility_of_element_located((By.XPATH, '//div[@class="clsDivBktWidgetDefaultLoading"]')))
         time.sleep(1)
-        times = []
         if not driver.find_element_by_id('idDivNotAvailableSlotsTextTop').is_displayed():
             times_elements = driver.find_elements_by_id("clsDivDatetimeSlot")
             print(14)
@@ -45,7 +45,10 @@ def get_times(driver):
                     times.append(time_slot.text.strip())
         print(times)
     except Exception as e:
-        times = str(e)
+        error = driver.find_element_by_id('idDivBktDefaultErrorDatetimeLoadingData')
+        if not error.is_displayed():
+            times = str(e)
+
     screen = driver.get_screenshot_as_png()
     return times, screen
 
