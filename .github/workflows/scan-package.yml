@@ -5,7 +5,7 @@ name: Monitor0
 
 on:
   schedule:
-    - cron: '0,15,30,45 * * * *'
+    - cron: '0,20,40 * * * *'
 
 jobs:
   build:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        sleep: ['1', '300']
+        sleep: ['1', '300', '600']
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 
