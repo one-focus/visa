@@ -48,7 +48,6 @@ def get_times(driver):
         error = driver.find_element_by_id('idDivBktDefaultErrorDatetimeLoadingData')
         if not error.is_displayed():
             times = str(e)
-
     screen = driver.get_screenshot_as_png()
     return times, screen
 

@@ -48,6 +48,6 @@ if times:
     create_user(driver)
 else:
     import datetime
-    bot.send_message(chat_id=int(sys.argv[3]), text=f'no dates:{datetime.datetime.now()}')
+    bot.send_message(chat_id=int(sys.argv[3]), text=f'{sys.argv[1]}no dates:{datetime.datetime.now()}')
 
 driver.quit()
