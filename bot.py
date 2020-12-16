@@ -25,12 +25,11 @@ def create_user(driver):
                 'name': 'Jajwalish',
                 'surname': 'Raios',
                 'email': 'agafinovaguzel@gmail.com',
-                'cellphone': 'rega11rega11@mail.ru',
+                'cellphone': '9417655339',
                 'nationality': 'Nepal',
-                'create_pass': 'Abcd123456!'}
+                'create_pass': 'Funtique7*v'}
         visa.create_user(driver, user['passport'], user['passport_expired'], user['name'], user['surname'],
-                         user['email'],
-                         user['cellphone'], user['nationality'], user['create_pass'])
+                         user['email'], user['cellphone'], user['nationality'], user['create_pass'])
 
         bot.send_photo(chat_id=int(sys.argv[3]), photo=driver.get_screenshot_as_png())
         time.sleep(10)

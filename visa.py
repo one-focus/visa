@@ -37,7 +37,7 @@ def get_times(driver):
         WebDriverWait(driver, 60).until(
             EC.invisibility_of_element_located((By.XPATH, '//div[@class="clsDivBktWidgetDefaultLoading"]')))
         time.sleep(1)
-        if not driver.find_element_by_id('idDivNotAvailableSlotsTextTop').is_displayed():
+        if not len(driver.find_elements_by_id('idDivNotAvailableSlotsTextTop')):
             times_elements = driver.find_elements_by_id("clsDivDatetimeSlot")
             print(14)
             if times_elements:
@@ -61,10 +61,11 @@ def create_user(driver, passport, passport_expired, name, surname, email, cellph
     driver.find_element_by_id('idIptBktcellphone').send_keys(cellphone)
     driver.find_element_by_id('idIptBktcustom3').send_keys(nationality)
     driver.find_element_by_id('idIptBktpassword').send_keys(create_pass)
-    driver.find_element_by_id('idIptBktAcceptCondtions').click()
+    driver.find_element_by_xpath('//label[@for="idIptBktAcceptCondtions"]').click()
     time.sleep(1)
     driver.find_element_by_id('idBktDefaultSignUpConfirmButton').click()
-
+    WebDriverWait(driver, 60).until(
+        EC.invisibility_of_element_located((By.XPATH, '//div[@class="clsDivBktWidgetDefaultLoading"]')))
 
 def add_existing_user(driver, passport, password):
     driver.find_element_by_id('idDivBktSignUpSubHeaderAccount').click()
