@@ -45,8 +45,8 @@ if times:
     bot.send_message(chat_id=int(sys.argv[3]), text=str(times))
     bot.send_photo(chat_id=int(sys.argv[3]), photo=screenshot)
     create_user(driver)
-# else:
-#     import datetime
-#     bot.send_message(chat_id=int(sys.argv[3]), text=f'{sys.argv[1]}:{datetime.datetime.now()}')
+else:
+    import datetime
+    bot.send_message(chat_id=int(sys.argv[3]), text=f'{sys.argv[1]}:{datetime.datetime.now()}')
 
 driver.quit()
