@@ -21,13 +21,14 @@ def get_times(driver):
         time.sleep(1)
         driver.switch_to.window(driver.window_handles[-1])
         print('5')
-        time.sleep(1)
         print('6')
         WebDriverWait(driver, 60).until(
             EC.invisibility_of_element_located((By.XPATH, '//img[@class="clsBktWidgetDefaultLoading"]')))
         print('7')
-        WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.ID, 'bktContinue'))).click()
+        WebDriverWait(driver, 60).until(
+            EC.invisibility_of_element_located((By.XPATH, '//div[@class="clsDivBktWidgetDefaultLoading"]')))
         print('8')
+        WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.ID, 'bktContinue'))).click()
         time.sleep(1)
         print('9')
         driver.find_element_by_xpath("//a[contains(@href, 'bkt550308')]").click()
@@ -36,6 +37,7 @@ def get_times(driver):
         print('11')
         WebDriverWait(driver, 60).until(
             EC.invisibility_of_element_located((By.XPATH, '//div[@class="clsDivBktWidgetDefaultLoading"]')))
+        print('12')
         time.sleep(1)
         if not len(driver.find_elements_by_id('idDivNotAvailableSlotsTextTop')):
             times_elements = driver.find_elements_by_id("clsDivDatetimeSlot")
@@ -66,6 +68,7 @@ def create_user(driver, passport, passport_expired, name, surname, email, cellph
     driver.find_element_by_id('idBktDefaultSignUpConfirmButton').click()
     WebDriverWait(driver, 60).until(
         EC.invisibility_of_element_located((By.XPATH, '//div[@class="clsDivBktWidgetDefaultLoading"]')))
+
 
 def add_existing_user(driver, passport, password):
     driver.find_element_by_id('idDivBktSignUpSubHeaderAccount').click()
