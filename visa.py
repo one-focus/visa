@@ -35,7 +35,7 @@ def get_times(driver):
         print('10')
         time.sleep(2)
         print('11')
-        WebDriverWait(driver, 60).until(
+        WebDriverWait(driver, 120).until(
             EC.invisibility_of_element_located((By.XPATH, '//div[@class="clsDivBktWidgetDefaultLoading"]')))
         print('12')
         time.sleep(1)
