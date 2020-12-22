@@ -27,7 +27,7 @@ def create_user(driver):
                 'email': 'agafinovaguzel@gmail.com',
                 'cellphone': '9417655339',
                 'nationality': 'Nepal',
-                'create_pass': 'Funtique7*v'}
+                'create_pass': 'Funtique7*3v'}
         visa.create_user(driver, user['passport'], user['passport_expired'], user['name'], user['surname'],
                          user['email'], user['cellphone'], user['nationality'], user['create_pass'])
 
