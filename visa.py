@@ -54,6 +54,7 @@ def get_times(driver):
         if not error.is_displayed():
             times = str(e)
     screen = driver.get_screenshot_as_png()
+    print(times)
     return times, screen
 
 
