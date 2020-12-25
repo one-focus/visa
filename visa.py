@@ -1,6 +1,6 @@
 import time
 
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, NoSuchWindowException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -37,7 +37,7 @@ def get_times(driver):
         time.sleep(2)
         print('11')
         try:
-            WebDriverWait(driver, 200).until(
+            WebDriverWait(driver, 20).until(
                 EC.invisibility_of_element_located((By.XPATH, '//div[@class="clsDivBktWidgetDefaultLoading"]')))
             print('12')
             time.sleep(1)
@@ -47,7 +47,7 @@ def get_times(driver):
                 if times_elements:
                     for time_slot in times_elements:
                         times.append(time_slot.text.strip())
-        except NoSuchElementException:
+        except NoSuchWindowException:
             pass
     except Exception as e:
         error = driver.find_element_by_id('idDivBktDefaultErrorDatetimeLoadingData')
