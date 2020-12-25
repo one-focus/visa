@@ -47,7 +47,7 @@ def get_times(driver):
                 if times_elements:
                     for time_slot in times_elements:
                         times.append(time_slot.text.strip())
-        except NoSuchWindowException:
+        except:
             pass
     except Exception as e:
         error = driver.find_element_by_id('idDivBktDefaultErrorDatetimeLoadingData')
