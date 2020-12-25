@@ -41,6 +41,7 @@ def create_user(driver):
 
 time.sleep(int(sys.argv[1]))
 times, screenshot = visa.get_times(driver)
+print(f'times:{times}')
 if times:
     bot.send_message(chat_id=int(sys.argv[3]), text=str(times))
     bot.send_photo(chat_id=int(sys.argv[3]), photo=screenshot)
