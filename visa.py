@@ -50,8 +50,8 @@ def get_times(driver):
         except:
             pass
     except Exception as e:
-        error = driver.find_element_by_id('idDivBktDefaultErrorDatetimeLoadingData')
-        if not error.is_displayed():
+        errors = driver.find_elements_by_id('idDivBktDefaultErrorDatetimeLoadingData')
+        if not len(errors):
             times = str(e)
     screen = driver.get_screenshot_as_png()
     print(times)
