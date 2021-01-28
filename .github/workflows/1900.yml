@@ -5,6 +5,8 @@ name: Every minute
 
 on:
   push:
+  schedule:
+    - cron: '49 14,15 * * *'
 
 jobs:
   build:
